@@ -2,33 +2,14 @@
 import sys
 sys.stdout = sys.stderr
 
-__all__ = ['geocode_getlocation']
+__all__ = ['nw-getlocation']
 
-_GEOCODER = None
-def _get_geocoder(googleAPI):
-    """Get Google geocoder.
-
-    googleAPI - (Google Map API Key)
-
-    http://code.google.com/apis/maps/signup.html
-    """
-    global _GEOCODER
-    from geopy import geocoders
-    if not _GEOCODER:
-        _GEOCODER = geocoders.Google(googleAPI)
-    return _GEOCODER
-
-def _geocode(googleAPI, location, first_match=True):
-    results = _get_geocoder(googleAPI).geocode(location, first_match)
-    if not results:
-        return None
-    if first_match:
-        return results.next()
-    return results
-
-def geocode_getlocation(googleAPI, location, first_match=True):
+def nw-getlocation(googleAPI, location, first_match=True):
     """Geocode location using Google geocoder.
-
+    
+    googleAPI - (Google Map API Key)
+    http://code.google.com/apis/maps/signup.html
+    
     Parameters
     ----------
     location : address, city, country, zip or postal code
@@ -49,9 +30,20 @@ def geocode_getlocation(googleAPI, location, first_match=True):
     Examples
     --------
 
-    >>> geocode_city('somegooglekey', 'Ontario, USA')
+    >>> nw-getlocation('YourGoogleKey', 'Ontario, USA')
     Fetching http://maps.google.com/maps/...
     (u'Ontario, OH, USA', (40.759501200000003, -82.590172499999994))
     """
 
-    return _geocode(googleAPI, location, first_match)
+    global _GEOCODER
+    if not _GEOCODER:
+        from geopy import geocoders
+        _GEOCODER = geocoders.Google(googleAPI)
+        
+    results = _GEOCODER.geocode(location, first_match)
+    if not results:
+        return None
+    if first_match:
+        return results.next()
+    return results
+    
