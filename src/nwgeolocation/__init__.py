@@ -2,9 +2,9 @@
 import sys
 sys.stdout = sys.stderr
 
-__all__ = ['nw-getlocation']
+__all__ = ['nw_getlocation']
 
-def nw-getlocation(googleAPI, location, first_match=True):
+def nw_getlocation(googleAPI, location, first_match=True):
     """Geocode location using Google geocoder.
     
     googleAPI - (Google Map API Key)
@@ -30,7 +30,7 @@ def nw-getlocation(googleAPI, location, first_match=True):
     Examples
     --------
 
-    >>> nw-getlocation('YourGoogleKey', 'Ontario, USA')
+    >>> nw_getlocation('YourGoogleKey', 'Ontario, USA')
     Fetching http://maps.google.com/maps/...
     (u'Ontario, OH, USA', (40.759501200000003, -82.590172499999994))
     """
