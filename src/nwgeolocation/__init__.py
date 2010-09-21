@@ -4,6 +4,7 @@ sys.stdout = sys.stderr
 
 __all__ = ['nw_getlocation']
 
+_GEOCODER
 def nw_getlocation(googleAPI, location, first_match=True):
     """Geocode location using Google geocoder.
     
