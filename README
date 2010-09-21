@@ -1,0 +1,12 @@
+nw-nwgeolocation
+================
+
+Use geopy and google API Key to get the lat/long of a location
+
+Patches welcome: http://github.com/un33k/nw-nwgeolocation
+
+Usage
+=====
+geocode_city('somegooglekey', 'Ontario, USA')
+Fetching http://maps.google.com/maps/...
+(u'Ontario, OH, USA', (40.759501200000003, -82.590172499999994))
